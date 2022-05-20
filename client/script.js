@@ -79,7 +79,11 @@ sayHelloButton.addEventListener("click", sayHello);
 const ohMy = () => {
   // YOUR CODE HERE
   axios.get("http://localhost:3000/animals").then((res) => {
-    console.log(res.data);
+    for (let i = 0; i < res.data.length; i++) {
+      let newParaElem = document.createElement("p");
+      newParaElem.textContent = res.data[i];
+      document.querySelector("body").appendChild(newParaElem);
+    }
   });
 };
 
@@ -131,14 +135,16 @@ document
 
 // CODE HERE
 const requestToQuery = () => {
-  axios.get("http://localhost:3000/query-test?name=thai").then((res) => {
-    console.log(res.data);
-  });
+  axios
+    .get("http://localhost:3000/query-test?name=thai&valorantRank=silverTwo")
+    .then((res) => {
+      console.log(res.data);
+    });
 };
 
 document
   .getElementById("query-button")
-  .addEventListener("click", requestToQuery)
+  .addEventListener("click", requestToQuery);
 
 ////////////////
 //INTERMEDIATE//
@@ -158,8 +164,19 @@ document
     In the function that you wrote for Problem 8, change the URL to test a couple different scenarios. 
 
     1: Send no queries on the URL -- what happened? 
+        // "You sent an empty query!" was logged to the console. 
 
-    2: Send more than 1 query on the URL -- what happened? 
+    2: Send more than 1 query on the URL -- what happened?
+        // The object below was logged to the console:
+    
+            {
+            message: "You sent more than 1 query!",
+            queries: {
+                name: 'thai',
+                valorantRank: 'silverTwo'
+                }
+            }
+            
 */
 
 // Edit code in Problem 8
