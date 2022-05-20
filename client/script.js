@@ -138,7 +138,7 @@ const requestToQuery = () => {
 
 document
   .getElementById("query-button")
-  .addEventListener("click", requestToQuery);
+  .addEventListener("click", requestToQuery)
 
 ////////////////
 //INTERMEDIATE//
