@@ -102,13 +102,12 @@ document.getElementById("animals-button").addEventListener("click", ohMy);
     We'll be updating this function in the next problem.
 */
 
-const repeatMyParam = (res) => {
+const repeatMyParam = () => {
   //YOUR CODE HERE
-  axios.get("http://localhost:3000/repeat/I-Love-Coding").then((res) => {
+  axios.get("http://localhost:3000/repeat/coding-is-tough").then((res) => {
     console.log(res.data);
+    document.getElementById("repeat-text").textContent = res.data;
   });
-
-  document.getElementById("repeat-text").textContent = res.data;
 };
 
 document
@@ -205,3 +204,14 @@ document
 */
 
 // CODE HERE
+const createFood = () => {
+  const foodInput = document.querySelector("input");
+  const body = { newFood: foodInput.value };
+  axios.post("http://localhost:3000/food", body).then((res) => {
+    console.log(res.data);
+  });
+};
+
+document
+  .getElementById("add-food-button")
+  .addEventListener("click", createFood);
